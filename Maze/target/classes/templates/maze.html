@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Maze Game</title>
+    <link rel="stylesheet" th:href="@{/css/cs.css}" />
+</head>
+<body>
+<div class="wrapper">
+    <h1>Maze</h1>
+
+
+    <!-- CSS Grid Maze -->
+    <div class="maze-grid"
+         th:style="${
+           'grid-template-columns: repeat(' + #lists.size(cells[0]) + ',30px); ' +
+           'grid-template-rows:    repeat(' + #lists.size(cells)    + ',30px);'
+         }">
+        <th:block th:each="row, rowStat : ${cells}">
+            <th:block th:each="cell, colStat : ${row}">
+                <div th:class="${
+                'cell'
+              + (rowStat.index == playerY && colStat.index == playerX   ? ' cell-player' : '')
+              + (rowStat.index == finishY  && colStat.index == finishX  ? ' cell-finish': '')
+              + (cell.hasTopWall()    ? ' wall-top'    : '')
+              + (cell.hasRightWall()  ? ' wall-right'  : '')
+              + (cell.hasBottomWall() ? ' wall-bottom' : '')
+              + (cell.hasLeftWall()   ? ' wall-left'   : '')
+          }"></div>
+            </th:block>
+        </th:block>
+    </div>
+
+    <!-- Controls (unchanged) -->
+    <div class="controls">
+        <a th:href="@{/maze(direction='new')}">New</a>
+        <a th:href="@{/maze(direction='up')}">↑</a>
+        <a th:href="@{/maze(direction='down')}">↓</a>
+        <a th:href="@{/maze(direction='left')}">←</a>
+        <a th:href="@{/maze(direction='right')}">→</a>
+        <a th:href="@{/maze/comment}">Comment</a>
+    </div>
+
+    <!-- High Scores -->
+    <h2>High Scores</h2>
+    <table>
+        <thead>
+        <tr><th>Player</th><th>Steps</th><th>Date</th></tr>
+        </thead>
+        <tbody>
+        <tr th:each="score : ${scores}">
+            <td th:text="${score.player}">Name</td>
+            <td th:text="${score.points}">0</td>
+            <td th:text="${#dates.format(score.playedOn,'yyyy-MM-dd HH:mm')}">2025-05-06 18:00</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- Comments -->
+    <h2>Comments</h2>
+    <div th:each="c : ${comments}" class="comment">
+        <p>
+            <strong th:text="${c.player}">User</strong>:
+            <span th:text="${c.comment}">Comment text</span>
+        </p>
+        <p class="date" th:text="${#dates.format(c.commentedOn,'yyyy-MM-dd HH:mm')}">
+            2025-05-06 18:00
+        </p>
+    </div>
+</div>
+</body>
+</html>

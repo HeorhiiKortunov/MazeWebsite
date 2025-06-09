@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Register</title>
+    <link rel="stylesheet" th:href="@{/css/cs.css}" />
+</head>
+<body>
+<div class="wrapper">
+    <h1>Register</h1>
+    <form th:action="@{/maze/register}" method="post">
+        <label for="name">Username</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required />
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required />
+
+        <button type="submit">Sign Up</button>
+    </form>
+
+    <div class="controls">
+        <a th:href="@{/maze/login}">Already have an account? Log in</a>
+    </div>
+</div>
+</body>
+</html>

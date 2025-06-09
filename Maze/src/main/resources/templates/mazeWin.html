@@ -1,0 +1,20 @@
+<!-- Win Page -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>You won!</title>
+    <!-- Подключаем тёмную тему -->
+    <link rel="stylesheet" th:href="@{/css/cs.css}" />
+</head>
+<body>
+<div class="wrapper">
+    <h1>You've finished with <span th:text="${steps}">0</span> score!</h1>
+
+    <form th:action="@{/maze/win}" method="post">
+        <input type="hidden" name="steps" th:value="${steps}" />
+        <button type="submit">New Maze</button>
+    </form>
+</div>
+</body>
+</html>
