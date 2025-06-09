@@ -41,21 +41,24 @@ Maze/
    ```bash
    git clone https://github.com/your-username/maze-game.git
 
-    Navigate to the project directory:
+2. Navigate to the project directory:
 
-cd Maze/MazeWebsite/Maze
+    ```bash
+    cd Maze/MazeWebsite/Maze
 
-Build and run the project (using Spring Boot):
+3. Build and run the project (using Spring Boot):
 
-./mvnw spring-boot:run
+    ```bash
+    ./mvnw spring-boot:run
 
-Open in your browser:
+4. Open in your browser:
 
-    http://localhost:8080
+    http://localhost:8081/register
 
 📸 Screenshots
 
-Add screenshots or GIFs of gameplay, login, and win screens here.
+![img.png](img.png)
+
 📌 TODO
 
     Secure the passwords
