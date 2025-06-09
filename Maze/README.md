@@ -53,7 +53,7 @@ Maze/
 
 4. Open in your browser:
 
-    http://localhost:8081/register
+    http://localhost:8081/maze/register
 
 📸 Screenshots
 
